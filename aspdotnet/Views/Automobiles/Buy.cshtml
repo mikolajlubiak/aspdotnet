@@ -1,0 +1,71 @@
+﻿@model aspdotnet.Models.Automobile
+
+@{
+    ViewData["Title"] = "Wynajmij";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Wynajmij</h1>
+
+<div>
+    <h4>Auto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Zdjecie
+        </dt>
+        <dd class="col-sm-10">
+            <img src="/@(@Model?.Id).jpg" style="max-width:500px;width:100%">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+    </dl>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BuyCar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Cena" />
+            <input type="hidden" asp-for="Nazwa" />
+            <div class="form-group">
+                <label asp-for="Imie_Nazwisko" class="control-label"></label>
+                <input asp-for="Imie_Nazwisko" class="form-control" />
+                <span asp-validation-for="Imie_Nazwisko" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odbior" class="control-label"></label>
+                <input asp-for="Odbior" class="form-control" />
+                <span asp-validation-for="Odbior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Oddanie" class="control-label"></label>
+                <input asp-for="Oddanie" class="form-control" />
+                <span asp-validation-for="Oddanie" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Wynajmij" class="btn btn-primary" />
+            </div>
+            <a asp-action="Index">Wroc do listy</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

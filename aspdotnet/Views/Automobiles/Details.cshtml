@@ -1,0 +1,38 @@
+﻿@model aspdotnet.Models.Automobile
+
+@{
+    ViewData["Title"] = "Szczegoly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Szczegoly</h1>
+
+<div>
+    <h4>Auto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Zdjecie
+        </dt>
+        <dd class="col-sm-10">
+            <img src="/@(@Model?.Id).jpg" style="max-width:500px;width:100%">
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Buy" asp-route-id="@Model?.Id">Wynajmij</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Wroc do listy</a>
+</div>

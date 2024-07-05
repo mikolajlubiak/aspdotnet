@@ -1,0 +1,50 @@
+﻿@model IEnumerable<aspdotnet.Models.Automobile>
+
+@{
+	ViewData["Title"] = "Indeks";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Indeks</h1>
+
+<p>
+	<a asp-action="Create">Stworz nowe</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Zdjecie
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Cena)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Nazwa)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					<img src="/@(item.Id).jpg" style="max-width:200px;width:100%">
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Cena) zł
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Nazwa)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+					<a asp-action="Details" asp-route-id="@item.Id">Szczegoly</a> |
+					<a asp-action="Delete" asp-route-id="@item.Id">Usun</a> |
+					<a asp-action="Buy" asp-route-id="@item.Id">Wynajmij</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
